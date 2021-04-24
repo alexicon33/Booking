@@ -101,6 +101,18 @@
         1,
         3
       ]
+    },
+    {
+      "id": 1619277636211,
+      "title": "My event",
+      "time": "2021-04-29T06:00:00.000Z",
+      "description": "redux",
+      "room": "401",
+      "photo": "li",
+      "organiser": 2,
+      "participants": [
+        1
+      ]
     }
   ]
 }

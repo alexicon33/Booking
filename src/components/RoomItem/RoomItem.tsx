@@ -13,7 +13,7 @@ import styles from './RoomItem.module.css';
 
 function getEventRow(event: Event): JSX.Element {
   return (
-    <NavLink to={`/events/${event.id}`} className={styles.link}>
+    <NavLink to={`/events/${event.id}`} className={styles.link} key={event.id}>
       <span className={styles.date}>{getDateFromString(event.time)}</span>
       <span className={styles.date}>{event.title}</span>
     </NavLink>
@@ -33,7 +33,7 @@ const RoomItem: FC<Room> = ({ id, type, photo }) => {
   if (events === null) return <Loader />;
 
   return (
-    <div className={styles.box} key={id}>
+    <div className={styles.box}>
       <div className={styles.descriptionBlock}>
         <div className={styles.title}>{id}</div>
         <span className={styles.capacity}>{`Вместимость: 20${type === 'lecture' ? '0' : ''} человек`}</span>

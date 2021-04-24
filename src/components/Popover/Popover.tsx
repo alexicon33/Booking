@@ -27,9 +27,9 @@ const Popover: FC<{events: Event[]}> = ({ events }) => {
   return (
     <div className={styles.box}>
       <h2 className={styles.title}>Ближайшие мероприятия: </h2>
-      <table className={styles.table}>
+      <table className={styles.table}><tbody>
         {events.slice(0, 3).map(event => getTableRow(event, trCallback))}
-      </table>
+        </tbody></table>
     </div>
   );
 };

@@ -11,11 +11,11 @@ const Rooms: FC<{}> = () => {
     <>
       <div className={styles.block}>
         <h2 className={styles.title}>Лекционные</h2>
-        {rooms.filter(room => room.type === 'lecture').map(room => <RoomItem {...(room as Room)} />)}
+        {rooms.filter(room => room.type === 'lecture').map(room => <RoomItem {...(room as Room)} key={room.id}/>)}
       </div>
       <div className={styles.block}>
         <h2 className={styles.title}>Семинарские</h2>
-        {rooms.filter(room => room.type === 'seminar').map(room => <RoomItem {...(room as Room)} />)}
+        {rooms.filter(room => room.type === 'seminar').map(room => <RoomItem {...(room as Room)} key={room.id}/>)}
       </div>
     </>
   );

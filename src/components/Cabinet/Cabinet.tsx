@@ -14,7 +14,7 @@ const Cabinet: FC<{}> = () => {
       <h2 className={styles.title}>Пока бронирований и приглашений нет...</h2>
       {user !== null && user.type === 'admin' && (
         <div className={styles.buttonWrapper}>
-          <Button text='Забронировать аудиторию' link='\booking' />
+          <Button text='Забронировать аудиторию' link='/booking' />
         </div>
       )}
     </>
