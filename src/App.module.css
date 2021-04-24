@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.body {
+  background: radial-gradient(white, #ffe7c3);
+  flex: 1 1 auto;
+}

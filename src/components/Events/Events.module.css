@@ -1,0 +1,37 @@
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.td {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.td, .th {
+  padding: 15px;
+}
+
+.table {
+  width: 80%;
+  margin: 30px auto 0;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.tr .td, .tr .th { 
+  border: 1px solid grey;
+}
+
+.table .tr:not(:first-child) {
+  transition: background-color .25s ease;
+}
+
+.table .tr:not(:first-child):hover {
+  background-color: #a6ff73;
+  cursor: pointer;
+}

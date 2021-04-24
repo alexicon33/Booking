@@ -1,0 +1,52 @@
+[
+  {
+    "id": "Большая Физическая",
+    "type": "lecture",
+    "photo": "https://vuzopedia.ru/storage/app/uploads/public/599/1d8/7d7/5991d87d7276b816437093.jpg"
+  },
+  {
+    "id": "Большая Химическая",
+    "type": "lecture",
+    "photo": "https://rb.ru/media/upload_tmp/2018/tinkov-1.jpg"
+  },
+  {
+    "id": "401",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  },
+  {
+    "id": "402",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  },
+  {
+    "id": "403",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  },
+  {
+    "id": "404",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  },
+  {
+    "id": "405",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  },
+  {
+    "id": "406",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  },
+  {
+    "id": "407",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  },
+  {
+    "id": "408",
+    "type": "seminar",
+    "photo": "http://i2.vninform.ru/image/9298650b-8b1e-403e-b6c1-014edb4086aa.jpg"
+  }
+]
