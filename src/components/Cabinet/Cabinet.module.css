@@ -1,0 +1,11 @@
+.buttonWrapper {
+  width: 40%;
+  margin: 15px auto;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 20px;
+}

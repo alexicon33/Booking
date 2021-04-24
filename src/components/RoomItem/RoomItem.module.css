@@ -1,0 +1,73 @@
+.box {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin: 20px auto;
+  border: 1px dashed grey;
+  border-radius: 50px;
+}
+
+.descriptionBlock {
+  margin-top: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.capacity {
+  font-weight: 300;
+  font-size: 17px;
+  color: #5a5a5a;
+}
+
+.busy, .free {
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.free {
+  color: #125a10;
+}
+
+.busy {
+  color: #b30000;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.eventsBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  text-decoration: none;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  margin: 0 auto;
+  padding: 3px;
+}
+
+.date {
+  text-decoration: none;
+  color: #444444;
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.buttonWrapper {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+}

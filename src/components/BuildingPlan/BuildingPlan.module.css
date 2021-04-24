@@ -1,0 +1,79 @@
+.box {
+  display: grid;
+  grid-template-columns: 5fr 16fr 5fr;
+  margin: 150px auto;
+  width: 80%;
+  height: 60%;
+}
+
+.leftLectureHall, .rightLectureHall, .upSpace, .downSpace {
+  border: 8px solid #522100;
+}
+
+.leftLectureHall {
+  border-right: 1px solid grey;
+}
+
+.rightLectureHall {
+  border-left: 1px solid grey;
+}
+
+.lectureRoom, .room {
+  color: #5a5a5a;
+  background-color: #ffeb92;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  transition: background-color .25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.lectureRoom {
+  height: 100%;
+}
+
+.lectureRoom:hover, .room:hover {
+  background-color: #a6ff73;
+  color: #0e005c;
+  border-radius: 8px;
+  outline: 2px dashed grey;
+  outline-offset: -2px;
+}
+
+.BordersContainer {
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+.upSpace {
+  border-top: none;
+}
+
+.downSpace {
+  border-bottom: none;
+}
+
+.Container {
+  display: grid;
+  grid-template-rows: 5fr 2fr 5fr;
+}
+
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  background-color: #522100;
+  border-left: 3px solid #522100;
+  border-right: 3px solid #522100;
+}
+
+.room {
+  border: 1px solid grey;
+}
+
+.test {
+  color: #0e005c;
+}

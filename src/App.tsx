@@ -1,24 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { Route, Switch } from 'react-router';
+
+import Header from './components/Header/Header';
+
+import styles from './App.module.css';
+import Events from './components/Events/Events';
+import BuildingPlan from './components/BuildingPlan/BuildingPlan';
+import EventPage from './components/EventPage/EventPage';
+import Rooms from './components/Rooms/Rooms';
+import LoginPage from './components/LoginPage/LoginPage';
+import Cabinet from './components/Cabinet/Cabinet';
+import BookingForm from './components/BookingForm/BookingForm';
+import { useDispatch } from 'react-redux';
+import { loadUserData } from './redux/User/actions';
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const user = sessionStorage.getItem('BookingServiceUser');
+    if (user !== null) {
+      dispatch(loadUserData(JSON.parse(user)));
+    }
+  }, [dispatch])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.App}>
+      <Header />
+      <div className={styles.body}>
+        <Switch>
+          <Route exact path='/' component={BuildingPlan} />
+          <Route exact path='/events' component={Events} />
+          <Route path='/events/:eventId' component={EventPage} />
+          <Route path='/rooms' component={Rooms} />
+          <Route path='/login' component={LoginPage} />
+          <Route path='/cabinet' component={Cabinet} />
+          <Route path='/booking' component={BookingForm} />
+        </Switch>
+      </div>
     </div>
   );
 }

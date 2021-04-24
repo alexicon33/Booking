@@ -1,0 +1,23 @@
+.box {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%
+}
+
+.td {
+  padding: 2px 8px;
+  border: 0.5px dashed rgb(184, 184, 184);
+}
+
+.tr {
+  transition: background-color .25s ease;
+}
+
+.tr:hover {
+  background-color: #a6ff73;
+  cursor: pointer;
+}

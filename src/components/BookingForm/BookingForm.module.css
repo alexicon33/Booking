@@ -1,0 +1,58 @@
+.warnNote {
+  margin-top: 30px;
+  color: rgb(185, 0, 0);
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 10px auto;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+}
+
+.mainBox {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 5px 7px;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  resize: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.dateTimeBox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Picker {
+  width: 20%;
+}
+
+.buttonWrapper {
+  margin-top: 20px;
+}
+
