@@ -15,7 +15,7 @@ const EventPage: FC<RouteComponentProps<EventId>> = ({ match }) => {
   const [organiser, setOrganiser] = useState<User | null>(null);
 
   useEffect(() => {
-    loadEventById(Number.parseInt(match.params.eventId)).then(eventResponse => {
+    loadEventById(match.params.eventId).then(eventResponse => {
       setEvent(eventResponse);
     })
   }, [match.params.eventId]);

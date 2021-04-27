@@ -1,38 +1,66 @@
 import { BookingFormData, Event, User } from '../../Types';
 import { compareEvents } from '../custom';
 
+import { db, dbLink } from '../../index';
+
 export async function loadAllEvents(): Promise<Event[]> {
-  return fetch('http://localhost:4000/events').then((response) => response.json());
+  // return fetch('http://localhost:4000/events').then((response) => response.json());
+  return fetch(`${dbLink}/events.json`)
+    .then((response) => response.json())
+    .then((response) => Object.values(response) as Event[])
+    .then((eventsArray) => eventsArray.sort(compareEvents));
 }
 
-export async function loadEventById(id: number): Promise<Event> {
-  return fetch(`http://localhost:4000/events?id=${id}`)
-    .then((response) => response.json())
-    .then((response) => response[0]);
+export async function loadEventById(id: string): Promise<Event> {
+  // return fetch(`http://localhost:4000/events?id=${id}`)
+  //   .then((response) => response.json())
+  //   .then((response) => response[0]);
+  return db
+    .ref(`events/${id}`)
+    .get()
+    .then((snapshot) => snapshot.val());
 }
 
 export async function loadEventsByRoom(id: string): Promise<Event[]> {
-  return fetch(`http://localhost:4000/events?room=${id}&_limit=3`)
+  return fetch(`${dbLink}/events.json?orderBy="room"&equalTo="${id}"`)
     .then((response) => response.json())
-    .then((response) => response.sort(compareEvents));
+    .then((response) => Object.values(response) as Event[])
+    .then((eventsArray) => eventsArray.sort(compareEvents));
 }
 
-export async function addEvent(formData: BookingFormData, dateString: string, userId?: number) {
+export async function addEvent(formData: BookingFormData, dateString: string, userId?: string) {
   if (userId === undefined) {
     throw Error('no organiser id');
   }
 
-  const eventsInTime: Event[] = await fetch(
-    `http://localhost:4000/events?room=${formData.room}&time=${dateString}`
-  ).then((res) => res.json());
+  const eventsInTime: Event[] = await fetch(`${dbLink}/events.json?orderBy="time"&equalTo="${dateString}"`)
+    .then((res) => res.json())
+    .then((res) => Object.values(res) as Event[])
+    .then((events) => events.filter((event) => event.room === formData.room));
+
   if (eventsInTime.length > 0) {
-    throw Error('occupied');
+    throw Error('room is occupied');
   }
 
-  let users: User[] = await fetch('http://localhost:4000/users').then((response) => response.json());
+  let users: User[] = await fetch(`${dbLink}/users.json`)
+    .then((response) => response.json())
+    .then((usersObject) => Object.values(usersObject) as User[]);
   users = users.filter((user) => formData.participants.includes(user.email));
+  // await fetch('http://localhost:4000/events', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json;charset=utf-8',
+  //   },
+  //   body: JSON.stringify(objectToSend),
+  // });
+  let eventId: string = '';
+  const newEventRef = await db.ref('events').push();
+  await newEventRef.get().then(snapshot => {
+    eventId = snapshot.key || '';
+  });
+
   const objectToSend: Event = {
-    id: Date.now(),
+    id: eventId,
     title: formData.title,
     time: dateString,
     description: formData.description,
@@ -41,11 +69,5 @@ export async function addEvent(formData: BookingFormData, dateString: string, us
     organiser: userId,
     participants: users.map((user) => user.id),
   };
-  await fetch('http://localhost:4000/events', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
-    body: JSON.stringify(objectToSend),
-  });
+  await newEventRef.set(objectToSend);
 }

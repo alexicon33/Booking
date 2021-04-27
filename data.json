@@ -1,35 +1,35 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": 0,
       "type": "user",
       "name": "Гари Невилл",
       "email": "nevill@gmail.com",
       "password": "nevill"
     },
     {
-      "id": 2,
+      "id": 1,
       "type": "admin",
       "name": "Уэйн Руни",
       "email": "rooney@gmail.com",
       "password": "rooney"
     },
     {
-      "id": 3,
+      "id": 2,
       "type": "user",
       "name": "Райан Гиггз",
       "email": "giggs@gmail.com",
       "password": "giggs"
     },
     {
-      "id": 4,
+      "id": 3,
       "type": "admin",
       "name": "Карлос Тевес",
       "email": "tevez@gmail.com",
       "password": "tevez"
     },
     {
-      "id": 5,
+      "id": 4,
       "type": "admin",
       "name": "admin",
       "email": "admin",
@@ -38,7 +38,7 @@
   ],
   "events": [
     {
-      "id": 1,
+      "id": 0,
       "title": "Мат. анализ",
       "time": "2021-04-21T14:00:00.000Z",
       "description": "Обычная пара по матану у 2 курса",
@@ -46,12 +46,12 @@
       "photo": "https://cs7.pikabu.ru/images/big_size_comm/2018-10_2/153916105618363759.jpg",
       "organiser": 2,
       "participants": [
-        1,
-        3
+        0,
+        2
       ]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "Frontend",
       "time": "2021-04-21T16:00:00.000Z",
       "description": "Tinkoff Fintech School lesson",
@@ -59,12 +59,12 @@
       "photo": "https://pbs.twimg.com/media/D7u7QUHW4AEIEG0.jpg",
       "organiser": 2,
       "participants": [
-        1,
-        3
+        0,
+        2
       ]
     },
     {
-      "id": 3,
+      "id": 2,
       "title": "Машинное обучение",
       "time": "2021-04-21T14:00:00.000Z",
       "description": "Изучаем свёрточные сети и методы регуляризации",
@@ -72,12 +72,12 @@
       "photo": "https://pbs.twimg.com/media/EClurDhVUAAn-4C.jpg",
       "organiser": 4,
       "participants": [
-        1,
-        2
+        0,
+        1
       ]
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "Теория информации",
       "time": "2021-04-21T14:30:00.000Z",
       "description": "Изучаем коды, исправляющие ошибки",
@@ -85,12 +85,12 @@
       "photo": "https://avatars.mds.yandex.net/get-zen_doc/1639101/pub_5ea9782087ea957abad0dec6_5ea98584d1cbcf0a0cd0be48/scale_1200",
       "organiser": 2,
       "participants": [
-        3,
-        4
+        2,
+        3
       ]
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "Android",
       "time": "2021-04-21T16:30:00.000Z",
       "description": "Начинаем свой проект",
@@ -98,8 +98,8 @@
       "photo": "https://qph.fs.quoracdn.net/main-qimg-5d26e70b8c68f9a65553a677a70697da",
       "organiser": 4,
       "participants": [
-        1,
-        3
+        0,
+        2
       ]
     }
   ]

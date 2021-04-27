@@ -1,14 +1,14 @@
 import { FormEventHandler } from "react";
 
 export type Event = {
-  id: number,
+  id: string,
   title: string,
   time: string,
   description?: string,
   room: string,
   photo?: string,
-  organiser: number,
-  participants: number[]
+  organiser: string,
+  participants: string[]
 }
 
 export type EventId = {
@@ -18,7 +18,7 @@ export type EventId = {
 export type UserType = 'admin' | 'user';
 
 export type User = {
-  id: number,
+  id: string,
   type: UserType,
   name: string,
   email: string,

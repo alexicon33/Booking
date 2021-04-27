@@ -1,0 +1,14 @@
+image: mhart/alpine-node:14
+
+stages:
+  - build
+
+build site:
+  stage: build
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    expire_in: 1 month
+    paths:
+      - build

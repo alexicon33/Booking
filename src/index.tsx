@@ -9,6 +9,12 @@ import store from './redux/store';
 
 import 'antd/dist/antd.css';
 
+import { firebase } from './initFirebase';
+
+export const db = firebase.database();
+export const dbLink = 'https://booking-e17f3-default-rtdb.firebaseio.com';
+
+
 ReactDOM.render(
   <Router>
     <Provider store={store}>

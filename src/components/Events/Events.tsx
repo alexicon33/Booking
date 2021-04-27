@@ -7,7 +7,7 @@ import { compareEvents, getDateFromString } from '../../utils/custom';
 
 import styles from './Events.module.css';
 
-function getTableRow(e: Event, trCallback: (id: number) => void): JSX.Element {
+function getTableRow(e: Event, trCallback: (id: string) => void): JSX.Element {
   return (
     <tr key={e.id} onClick={() => trCallback(e.id)} className={styles.tr}>
       <td className={styles.td}>{getDateFromString(e.time)}</td>
@@ -22,7 +22,7 @@ const Events: FC<{}> = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const history = useHistory();
 
-  const trCallback = (id: number) => {
+  const trCallback = (id: string) => {
     history.push(`/events/${id}`);
   }
 
