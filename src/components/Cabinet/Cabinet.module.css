@@ -9,3 +9,9 @@
   font-family: 'Roboto', sans-serif;
   margin-top: 20px;
 }
+
+.hr {
+  margin: 30px 50px;
+  border-top: 5px grey;
+  border-style: none none dotted;
+}

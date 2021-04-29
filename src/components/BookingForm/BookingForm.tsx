@@ -12,6 +12,7 @@ import { addEvent } from '../../utils/api/loadEvents';
 import rooms from '../Rooms/rooms.json';
 
 import styles from './BookingForm.module.css';
+import Loader from '../Loader/Loader';
 
 const { Option } = Select;
 
@@ -19,6 +20,8 @@ const BookingForm: FC<{}> = () => {
   const { register, handleSubmit, setValue } = useForm();
 
   const [error, setError] = useState<boolean>(false);
+  const [sent, setSent] = useState<boolean>(true);
+
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -36,9 +39,11 @@ const BookingForm: FC<{}> = () => {
     const dateTime = new Date(data.time);
     const dateString = new Date(dateDays.getFullYear(), dateDays.getMonth(), dateDays.getDate(), 
                                 dateTime.getHours(), dateTime.getMinutes()).toISOString();
+    setSent(false);
     addEvent(data, dateString, user?.id).then(
       () => {
         dispatch(setValid(false));
+        setSent(true);
         history.push('/events');
       },
       (error) => {
@@ -47,6 +52,13 @@ const BookingForm: FC<{}> = () => {
       }
     );
   });
+
+  if (!sent) {
+    return <>
+      <Loader />
+      <h2 className={styles.title}>Отправляем приглашения...</h2>
+    </>
+  }
 
   if (user === null || user.type !== 'admin') {
     return <h2 className={styles.warnNote}>Эта страница находится в закрытой зоне. Для бронирования аудитории войдите в аккаунт администратора.</h2>

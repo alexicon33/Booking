@@ -6,6 +6,10 @@
   height: 60%;
 }
 
+.hall {
+  background: white;
+}
+
 .leftLectureHall, .rightLectureHall, .upSpace, .downSpace {
   border: 8px solid #522100;
 }

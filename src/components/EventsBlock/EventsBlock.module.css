@@ -1,10 +1,3 @@
-.title {
-  font-family: 'Roboto', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  margin-top: 20px;
-}
-
 .td {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -21,6 +14,7 @@
   margin: 30px auto 0;
   border: 2px solid black;
   border-collapse: collapse;
+  background: #ffe7c3;
 }
 
 .tr .td, .tr .th { 

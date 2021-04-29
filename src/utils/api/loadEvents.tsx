@@ -28,6 +28,20 @@ export async function loadEventsByRoom(id: string): Promise<Event[]> {
     .then((eventsArray) => eventsArray.sort(compareEvents));
 }
 
+export async function loadEventsByOrganiser(id: string): Promise<Event[]> {
+  return fetch(`${dbLink}/events.json?orderBy="organiser"&equalTo="${id}"`)
+    .then((response) => response.json())
+    .then((response) => Object.values(response) as Event[])
+    .then((eventsArray) => eventsArray.sort(compareEvents));
+}
+
+export async function loadEventsByParticipant(id: string): Promise<Event[]> {
+  return fetch(`${dbLink}/events.json?`)
+    .then((response) => response.json())
+    .then((response) => Object.values(response) as Event[])
+    .then((eventsArray) => eventsArray.filter(event => event.participants.includes(id)));
+}
+
 export async function addEvent(formData: BookingFormData, dateString: string, userId?: string) {
   if (userId === undefined) {
     throw Error('no organiser id');

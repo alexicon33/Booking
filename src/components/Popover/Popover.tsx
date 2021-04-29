@@ -12,7 +12,9 @@ function getTableRow(e: Event, trCallback: (id: string) => void): JSX.Element {
     <tr key={e.id} onClick={() => trCallback(e.id)} className={styles.tr}>
       <td className={styles.td}>{getDateFromString(e.time)}</td>
       <td className={styles.td}>{e.title}</td>
-      <td className={styles.td}>{e.description?.slice(0, 20)}</td>
+      <td className={styles.td}>
+        {e.description ? e.description.slice(0, 25) + (e.description.length > 25 ? '...' : '') : '—'}
+      </td>
     </tr>
   );
 }
@@ -26,7 +28,7 @@ const Popover: FC<{events: Event[]}> = ({ events }) => {
 
   return (
     <div className={styles.box}>
-      <h2 className={styles.title}>Ближайшие мероприятия: </h2>
+      <h2 className={styles.title}>{events.length > 0 ? 'Ближайшие мероприятия:' : 'Ближайших мероприятий нет'}</h2>
       <table className={styles.table}><tbody>
         {events.slice(0, 3).map(event => getTableRow(event, trCallback))}
         </tbody></table>

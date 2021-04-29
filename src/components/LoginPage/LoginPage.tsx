@@ -23,7 +23,8 @@ const LoginPage: FC<{}> = () => {
         sessionStorage.setItem('BookingServiceUser', JSON.stringify(user));
         history.push('/cabinet');
       },
-      () => {
+      (err) => {
+        console.log(err);
         setError(true);
         reset();
       }
