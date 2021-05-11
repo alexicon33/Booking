@@ -3,7 +3,8 @@ import { FormEventHandler } from "react";
 export type Event = {
   id: string,
   title: string,
-  time: string,
+  start: string,
+  end: string,
   description?: string,
   room: string,
   photo?: string,
@@ -45,11 +46,12 @@ export type LoginPageFormData = {
 }
 
 export type BookingFormData = {
-  title: string;
-  time: string;
-  date: string;
-  description?: string;
-  photo?: string;
-  participants: string;
-  room: string;
+  title: string,
+  start: string,
+  end: string,
+  date: string,
+  description?: string,
+  photo?: FileList,
+  participants: string,
+  room: string
 }

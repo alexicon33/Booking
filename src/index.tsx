@@ -13,7 +13,7 @@ import { firebase } from './initFirebase';
 
 export const db = firebase.database();
 export const dbLink = 'https://booking-e17f3-default-rtdb.firebaseio.com';
-
+export const storage = firebase.storage();
 
 ReactDOM.render(
   <Router>

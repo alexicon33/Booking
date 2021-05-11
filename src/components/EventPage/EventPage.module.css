@@ -32,7 +32,7 @@
 }
 
 .dateTime, .organiser, .details {
-  padding: 10px;
+  padding: 5px;
   margin: 5px auto;
   color: #1e0055;
 }
@@ -42,7 +42,8 @@
 }
 
 .photo {
-  width: 100%
+  width: 100%;
+  max-height: 100%;
 }
 
 .participants {

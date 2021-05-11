@@ -5,7 +5,7 @@ import { Store } from '../../redux/reduxTypes';
 
 import { Event, Room, User } from '../../Types';
 import { loadEventsByRoom } from '../../utils/api/loadEvents';
-import { getDateFromString } from '../../utils/custom';
+import { getDateFromString, getTimeFromString } from '../../utils/custom';
 import Button from '../Button/Button';
 import Loader from '../Loader/Loader';
 
@@ -14,7 +14,8 @@ import styles from './RoomItem.module.css';
 function getEventRow(event: Event): JSX.Element {
   return (
     <NavLink to={`/events/${event.id}`} className={styles.link} key={event.id}>
-      <span className={styles.date}>{getDateFromString(event.time)}</span>
+      <span className={styles.date}>{getDateFromString(event.start)}</span>
+      <span className={styles.date}>{`${getTimeFromString(event.start)} — ${getTimeFromString(event.end)}`}</span>
       <span className={styles.date}>{event.title}</span>
     </NavLink>
   );

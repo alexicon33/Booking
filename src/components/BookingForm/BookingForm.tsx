@@ -8,20 +8,23 @@ import { DatePicker, Select, TimePicker } from 'antd';
 import { BookingFormData, User } from '../../Types';
 import { Store } from '../../redux/reduxTypes';
 import Button from '../Button/Button';
-import { addEvent } from '../../utils/api/loadEvents';
+import { addEvent, checkEvent } from '../../utils/api/loadEvents';
 import rooms from '../Rooms/rooms.json';
 
 import styles from './BookingForm.module.css';
 import Loader from '../Loader/Loader';
+import { getISOstring } from '../../utils/custom';
+import defaultImage from '../EventPage/default-placeholder.png';
 
 const { Option } = Select;
+
 
 const BookingForm: FC<{}> = () => {
   const { register, handleSubmit, setValue } = useForm();
 
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
   const [sent, setSent] = useState<boolean>(true);
-
+  const [imageLink, setImageLink] = useState<string>(defaultImage);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -31,26 +34,33 @@ const BookingForm: FC<{}> = () => {
   useEffect(() => {
     register('room', { required: true });
     register('date', { required: true });
-    register('time', { required: true });
+    register('start', { required: true });
+    register('end', { required: true });
   }, [register]);
 
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const reader = new FileReader();
+    reader.onload = (() => {setImageLink(reader.result as string)});
+    reader.readAsDataURL((e.target.files as FileList)[0]);
+  }
+
   const onSubmit = handleSubmit((data: BookingFormData) => {
-    const dateDays = new Date(data.date);
-    const dateTime = new Date(data.time);
-    const dateString = new Date(dateDays.getFullYear(), dateDays.getMonth(), dateDays.getDate(), 
-                                dateTime.getHours(), dateTime.getMinutes()).toISOString();
-    setSent(false);
-    addEvent(data, dateString, user?.id).then(
+    const dateStart = getISOstring(data.date, data.start);
+    const dateEnd = getISOstring(data.date, data.end);
+    checkEvent(data, dateStart, dateEnd, user?.id).then(
+      () => {
+        setSent(false);
+        return addEvent(data, dateStart, dateEnd, user?.id || '');
+      }
+    ).then(
       () => {
         dispatch(setValid(false));
-        setSent(true);
         history.push('/events');
       },
-      (error) => {
-        console.log(error);
-        setError(true);
+      (err) => {
+        setError(err.message);
       }
-    );
+    ).finally(() => { setSent(true); });
   });
 
   if (!sent) {
@@ -79,7 +89,7 @@ const BookingForm: FC<{}> = () => {
             <div className={styles.dateTimeBox}>
               <DatePicker
                 className={styles.Picker}
-                placeholder='Выберите дату'
+                placeholder='Дата'
                 onChange={(newDateObject) => {
                   setValue('date', newDateObject?.utc().format());
                 }}
@@ -87,9 +97,17 @@ const BookingForm: FC<{}> = () => {
               <TimePicker
                 className={styles.Picker}
                 format='HH:mm'
-                placeholder='Выберите время'
+                placeholder='Время начала...'
                 onChange={(newTimeObject) => {
-                  setValue('time', newTimeObject?.utc().format());
+                  setValue('start', newTimeObject?.format());
+                }}
+              />
+              <TimePicker
+                className={styles.Picker}
+                format='HH:mm'
+                placeholder='Время окончания...'
+                onChange={(newTimeObject) => {
+                  setValue('end', newTimeObject?.format());
                 }}
               />
             </div>
@@ -110,15 +128,16 @@ const BookingForm: FC<{}> = () => {
               ))}
             </Select>
           </div>
-          <textarea
-            className={`${styles.photoLink} ${styles.input}`}
-            placeholder='Ссылка на картинку. Потом надо будет разобраться с хостингом изображений и сделать по-нормальному.'
-            {...register('photo')}
-          />
+          <div className={styles.imageUpload}>
+            <label htmlFor="file-input">
+              <img src={imageLink} alt='Картинка мероприятия'/>
+            </label>
+            <input id="file-input" type="file" {...register('photo')} onChange={handleFile}/>
+          </div>
         </div>
         <h2 className={styles.title}>Приглашённые пользователи</h2>
         <textarea className={`${styles.input} ${styles.participants}`} placeholder='Введите e-mail-ы в любом формате' {...register('participants')}/>
-        {error && <span className={styles.errorNote}>Извините, но в выбранное время аудитория уже занята.</span>}
+        {error && <span className={styles.errorNote}>{`${error}`}</span>}
         <div className={styles.buttonWrapper}><Button text={'Забронировать'} onClick={onSubmit} /></div>
       </form>
     </>

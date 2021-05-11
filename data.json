@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": "0",
       "type": "user",
       "name": "Гари Невилл",
       "email": "nevill@gmail.com",
@@ -40,7 +40,8 @@
     {
       "id": "0",
       "title": "Мат. анализ",
-      "time": "2021-04-21T14:00:00.000Z",
+      "start": "2021-05-21T14:00:00.000Z",
+      "end": "2021-05-21T16:00:00.000Z",
       "description": "Обычная пара по матану у 2 курса",
       "room": "403",
       "photo": "https://cs7.pikabu.ru/images/big_size_comm/2018-10_2/153916105618363759.jpg",
@@ -53,7 +54,8 @@
     {
       "id": "1",
       "title": "Frontend",
-      "time": "2021-04-21T16:00:00.000Z",
+      "start": "2021-05-21T16:00:00.000Z",
+      "end": "2021-05-21T18:00:00.000Z",
       "description": "Tinkoff Fintech School lesson",
       "room": "403",
       "photo": "https://pbs.twimg.com/media/D7u7QUHW4AEIEG0.jpg",
@@ -66,7 +68,8 @@
     {
       "id": "2",
       "title": "Машинное обучение",
-      "time": "2021-04-21T14:00:00.000Z",
+      "start": "2021-04-21T14:00:00.000Z",
+      "end": "2021-04-21T15:30:00.000Z",
       "description": "Изучаем свёрточные сети и методы регуляризации",
       "room": "403",
       "photo": "https://pbs.twimg.com/media/EClurDhVUAAn-4C.jpg",
@@ -79,7 +82,8 @@
     {
       "id": "3",
       "title": "Теория информации",
-      "time": "2021-04-21T14:30:00.000Z",
+      "start": "2021-04-21T14:30:00.000Z",
+      "end": "2021-04-21T17:30:00.000Z",
       "description": "Изучаем коды, исправляющие ошибки",
       "room": "Большая Химическая",
       "photo": "https://avatars.mds.yandex.net/get-zen_doc/1639101/pub_5ea9782087ea957abad0dec6_5ea98584d1cbcf0a0cd0be48/scale_1200",
@@ -92,7 +96,8 @@
     {
       "id": "4",
       "title": "Android",
-      "time": "2021-04-21T16:30:00.000Z",
+      "start": "2021-04-21T16:30:00.000Z",
+      "end": "2021-04-21T19:00:00.000Z",
       "description": "Начинаем свой проект",
       "room": "Большая Физическая",
       "photo": "https://qph.fs.quoracdn.net/main-qimg-5d26e70b8c68f9a65553a677a70697da",

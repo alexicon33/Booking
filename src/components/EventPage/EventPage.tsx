@@ -4,8 +4,9 @@ import { RouteComponentProps } from 'react-router';
 import { Event, EventId, User } from '../../Types';
 import { loadEventById } from '../../utils/api/loadEvents';
 import { loadUsersByIds, loadUserById } from '../../utils/api/loadUsers';
-import { getDateFromString } from '../../utils/custom';
+import { getDateFromString, getTimeFromString } from '../../utils/custom';
 import Loader from '../Loader/Loader';
+import defaultImage from './default-placeholder.png';
 
 import styles from './EventPage.module.css'; 
 
@@ -44,11 +45,12 @@ const EventPage: FC<RouteComponentProps<EventId>> = ({ match }) => {
       <div className={styles.descriptionBox}>
         <div className={styles.description}>
           <div className={styles.title}>{event.title}</div>
-          <div className={styles.dateTime}>{`Дата и время: ${getDateFromString(event.time)}`}</div>
+          <div className={styles.dateTime}>{`Дата: ${getDateFromString(event.start)}`}</div>
+          <div className={styles.dateTime}>{`Время: ${getTimeFromString(event.start)} — ${getTimeFromString(event.end)}`}</div>
           <div className={styles.organiser}>{`Организатор: ${organiser.name}`}</div>
           <div className={styles.details}>{event.description}</div>
         </div>
-        <img alt='Здесь могла бы быть картинка, но её нет(' src={event?.photo} className={styles.photo}/>
+        <img alt='Здесь могла бы быть картинка, но её нет(' src={event.photo || defaultImage} className={styles.photo}/>
       </div>
       <div className={styles.participants}>
         <h3 className={styles.participantsTitle}>Приглашённые пользователи</h3>

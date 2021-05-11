@@ -3,9 +3,6 @@ import { User } from '../../Types';
 import { db, dbLink } from '../../index';
 
 export async function loadUserById(id: string): Promise<User> {
-  // return fetch(`http://localhost:4000/users?id=${id}`)
-  //   .then((response) => response.json())
-  //   .then((response) => response[0]);
   return db
     .ref(`users/${id}`)
     .get()
@@ -13,6 +10,7 @@ export async function loadUserById(id: string): Promise<User> {
 }
 
 export async function loadUsersByIds(ids: string[]): Promise<User[]> {
+  ids = ids.filter(id => id !== 'null_id');
   return Promise.all(ids.map((id) => loadUserById(id)));
 }
 

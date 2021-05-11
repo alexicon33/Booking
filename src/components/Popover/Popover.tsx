@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useHistory } from 'react-router';
 
 import { Event } from '../../Types';
-import { getDateFromString } from '../../utils/custom';
+import { getDateFromString, getTimeFromString } from '../../utils/custom';
 
 import styles from './Popover.module.css';
 
@@ -10,7 +10,8 @@ import styles from './Popover.module.css';
 function getTableRow(e: Event, trCallback: (id: string) => void): JSX.Element {
   return (
     <tr key={e.id} onClick={() => trCallback(e.id)} className={styles.tr}>
-      <td className={styles.td}>{getDateFromString(e.time)}</td>
+      <td className={styles.td}>{`${getDateFromString(e.start)}`}</td>
+      <td className={styles.td}>{`${getTimeFromString(e.start)} — ${getTimeFromString(e.end)}`}</td>
       <td className={styles.td}>{e.title}</td>
       <td className={styles.td}>
         {e.description ? e.description.slice(0, 25) + (e.description.length > 25 ? '...' : '') : '—'}

@@ -9,6 +9,12 @@
   padding: 15px;
 }
 
+.th {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .table {
   width: 80%;
   margin: 30px auto 0;
