@@ -1,7 +1,12 @@
 import { BookingFormData, Event, User } from '../../Types';
-import { compareEvents } from '../custom';
+import { compareEvents, getDateFromString, getTimeFromString } from '../custom';
+import { send } from 'emailjs-com';
 
 import { db, dbLink, storage } from '../../index';
+import { loadUserById } from './loadUsers';
+
+const defaultEmails = ['nevill@gmail.com', 'rooney@gmail.com', 'giggs@gmail.com', 'tevez@gmail.com']
+
 
 export async function loadAllEvents(): Promise<Event[]> {
   return fetch(`${dbLink}/events.json`)
@@ -83,6 +88,35 @@ async function getPhotoUrl(eventId: string, file: File): Promise<string> {
 }
 
 
+async function sendEmail(user: User, orgName: string, title: string, dateStart: string, dateEnd: string, room: string, description?: string) {
+  const date = getDateFromString(dateStart);
+  const time = `${getTimeFromString(dateStart)} — ${getTimeFromString(dateEnd)}`;
+  const toSendTemplate = {
+    to_name: user.email,
+    username: user.name,
+    title,
+    date,
+    time,
+    room,
+    organiser: orgName,
+    description,
+    reply_to: 'booking-alexicon@gmail.com',
+  };
+  return send(
+    'service_2b05b25',
+    'template_q7gg5lc',
+    toSendTemplate,
+    'user_LJvKLzTaFKGMFEgfUgNZq'
+  )
+  .then((response) => {
+    console.log('SUCCESS!', response.status, response.text);
+  })
+  .catch((err) => {
+    console.log('FAILED...', err);
+  });
+}
+
+
 export async function addEvent(formData: BookingFormData, dateStart: string, dateEnd: string, userId: string) {
 
   let users: User[] = await fetch(`${dbLink}/users.json`)
@@ -115,4 +149,9 @@ export async function addEvent(formData: BookingFormData, dateStart: string, dat
     participants,
   };
   await newEventRef.set(objectToSend);
+
+  users = users.filter((user) => !defaultEmails.includes(user.email));
+  const organiser: User = await loadUserById(userId);
+
+  await Promise.all(users.map(user => sendEmail(user, organiser.name, formData.title, dateStart, dateEnd, formData.room, formData.description)));
 }

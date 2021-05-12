@@ -34,9 +34,14 @@ const Header: FC<{}> = () => {
         </NavLink>
       </ul>
       {user === null ?(
-        <NavLink to='/login' className={styles.menuItem}>
-          Войти
-        </NavLink>
+        <ul className={styles.menuList}>
+          <NavLink to='/login' className={styles.menuItem}>
+            Войти
+          </NavLink>
+          <NavLink to='/register' className={styles.menuItem}>
+            Регистрация
+          </NavLink>
+        </ul>
       ) : (
         <ul className={styles.menuList}>
           <NavLink to='/cabinet' className={styles.menuItem}>

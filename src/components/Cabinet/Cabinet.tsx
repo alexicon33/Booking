@@ -43,7 +43,13 @@ const Cabinet: FC<{}> = () => {
             <Button text='Забронировать аудиторию' link='/booking' />
           </div>
         </>
-        : <h2 className={styles.title}>Пока бронирований нет...</h2>)}
+        : 
+        <>
+          <h2 className={styles.title}>Пока бронирований нет...</h2>
+          <div className={styles.buttonWrapper}>
+            <Button text='Забронировать аудиторию' link='/booking' />
+          </div>
+        </>)}
       {user !== null && user.type === 'admin' && <hr className={styles.hr}/>}
       {userEvents.length > 0 ?
         <> 

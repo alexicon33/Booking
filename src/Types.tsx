@@ -45,6 +45,11 @@ export type LoginPageFormData = {
   password: string
 }
 
+export interface RegistrationPageFormData extends LoginPageFormData {
+  userType: UserType,
+  name: string
+}
+
 export type BookingFormData = {
   title: string,
   start: string,

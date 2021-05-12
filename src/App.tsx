@@ -16,6 +16,7 @@ import { loadUserData } from './redux/User/actions';
 
 import particlesConfig from './particles-config.json';
 import Particles from 'react-particles-js';
+import RegistrationPage from './components/RegistrationPage/RegistrationPage';
 
 
 
@@ -43,6 +44,7 @@ function App() {
           <Route path='/events/:eventId' component={EventPage} />
           <Route path='/rooms' component={Rooms} />
           <Route path='/login' component={LoginPage} />
+          <Route path='/register' component={RegistrationPage} />
           <Route path='/cabinet' component={Cabinet} />
           <Route path='/booking' component={BookingForm} />
         </Switch>
