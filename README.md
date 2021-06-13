@@ -1,5 +1,6 @@
 # Сервис бронирования аудиторий &nbsp;&nbsp;![Gitlab](https://gitlab.com/alexic0n/booking/badges/master/pipeline.svg)
 Этот проект --- курсовая работа в рамках Тинькофф Финтех Школы 2021 года.
+
 Текущая версия сайта в проде: https://booking-three.vercel.app/
 ## Локальный запуск
 Примеры данных лежат в файле `data.json`, в качестве основной базы используется Firebase Realtime Database. Локальный запуск проекта:
