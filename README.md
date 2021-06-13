@@ -1,4 +1,4 @@
-# Сервис бронирования аудиторий &nbsp;&nbsp;[![build status](https://gitlab.com/alexic0n/booking/badges/master/pipeline.svg)](https://gitlab.com/alexic0n/booking/badges/master/pipeline.svg)
+# Сервис бронирования аудиторий &nbsp;&nbsp;![Gitlab](https://gitlab.com/alexic0n/booking/badges/master/pipeline.svg)
 Этот проект --- курсовая работа в рамках Тинькофф Финтех Школы 2021 года.
 Текущая версия сайта в проде: https://booking-three.vercel.app/
 ## Локальный запуск
